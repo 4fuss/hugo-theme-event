@@ -24,10 +24,4 @@
         </div>
     </section>
 
-    {{- partial "sections/cta.html" (
-        dict
-        "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId
-        "ctaUrl" .Site.Params.themes.event.callToAction.other.url
-        )
-    }}
 {{ end }}

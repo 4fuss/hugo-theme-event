@@ -2,7 +2,6 @@
 
 {{ $context := . }}
 {{ $sessionizeId := $context.Site.Params.themes.event.sessionizeId }}
-
 {{ if (or (eq $sessionizeId nil) (not $sessionizeId)) }}
     {{ warnf "No Sessionize ID found! Did you set it in the site parameters?" }}
 {{ else }}

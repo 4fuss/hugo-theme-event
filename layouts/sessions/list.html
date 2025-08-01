@@ -1,5 +1,5 @@
 {{- define "main" }}
-    {{- $scheduledSessionPages := where .Pages "Params.isScheduled" true }}
+    {{- $scheduledSessionPages := where .RegularPages "Params.isScheduled" true }}
     {{- $sessionsGroupedByDay := $scheduledSessionPages.GroupByParamDate "date" "2006-01-02" "asc" }}
     {{- $sessionsGroupedByTrack := $scheduledSessionPages.GroupByParam "track" }}
     {{- $sessionTrackIndices := dict }}
@@ -122,6 +122,7 @@
         {{ else }}
             <div class="section nothing-scheduled-section">
                 <h1 class="heading heading--highlighted heading--centered nothing-scheduled-section__heading">
+                  {{ $scheduledSessionPages }}
                     {{ T "sessions_page.heading_no_sessions" }}
                 </h1>
                 <h2 class="heading heading--2 heading--centered nothing-scheduled-section__heading">
@@ -135,10 +136,4 @@
         {{ end }}
     </div>
 
-    {{- partial "sections/cta.html" (
-        dict
-        "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId
-        "ctaUrl" .Site.Params.themes.event.callToAction.other.url
-        )
-    }}
 {{- end }}

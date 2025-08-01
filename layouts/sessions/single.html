@@ -19,7 +19,7 @@
                     </div>
                     {{- page.Title -}}
                 </h1>
-                <p class="single-session-section__content">{{- page.RawContent }}</p>
+                <p class="single-session-section__content">{{- page.RawContent | markdownify }}</p>
                 {{- partial "session-categories.html" (
                     dict
                     "categories" page.Params.categories
@@ -28,7 +28,7 @@
                 -}}
             </div>
         </section>
-        <section class="section" aria-label="Speaker of the session">
+        <!--<section class="section" aria-label="Speaker of the session">
             <h1 class="heading heading--2">{{ T "sessions_page.speaker" }}</h1>
             <ul class="carousel single-session-speaker-list" role="list">
                 {{- $sessionSpeakerPages := where (where .Site.Pages "Section" "speakers") "Params.speakerId" "in" page.Params.speakerIds }}
@@ -75,7 +75,7 @@
                     {{- end }}
                 {{- end }}
             </ul>
-        </section>
+            </section>-->
     </div>
 
     {{- $sameTrackSessions := slice }}
@@ -94,7 +94,7 @@
     {{ end }}
 
 
-    <div class="section-container section-container--dimmed">
+    <!--<div class="section-container section-container--dimmed">
         <section class="section same-track-sessions-section" aria-label="Further session from the same track">
             <h1 class="same-track-sessions-section__heading">
                 {{- if page.Params.track }}
@@ -114,12 +114,6 @@
                 )
             }}
         </section>
-    </div>
+    </div>-->
 
-    {{- partial "sections/cta.html" (
-        dict
-        "eventbriteId" .Site.Params.themes.event.callToAction.eventbrite.eventId
-        "ctaUrl" .Site.Params.themes.event.callToAction.other.url
-        )
-    }}
 {{ end }}
