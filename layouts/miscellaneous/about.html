@@ -9,7 +9,7 @@
             <h1 class="heading heading--1">{{- T "about_page.heading" }}</h1>
             {{ with $event.aboutUs }}
                 <div class="markdown about__text">
-                    {{ . | markdownify }}
+                    {{ readFile . | markdownify }}
                 </div>
             {{ end }}
 
@@ -55,10 +55,4 @@
         </section>
     </div>
 
-    {{- partial "sections/cta.html" (
-        dict
-        "eventbriteId" $event.callToAction.eventbrite.eventId
-        "ctaUrl" $event.callToAction.other.url
-        )
-    }}
 {{ end }}
