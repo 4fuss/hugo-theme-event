@@ -12,6 +12,10 @@
     line-height: 1.5;
 }
 
+.about__text img {
+  max-width: 100%;
+}
+
 .about__organizers-menu {
     all: unset;
     width: 100%;
